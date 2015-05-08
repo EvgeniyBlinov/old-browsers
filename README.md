@@ -4,7 +4,7 @@
 old-browsers
 
 
-### License
+## License
 
 [![MIT License][license-image]][license-url]
 

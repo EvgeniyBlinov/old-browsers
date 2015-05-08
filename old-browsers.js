@@ -82,27 +82,27 @@
      **/
     OldBrowsers.prototype.getTemplate = function (){
         var config = this.config;
-        return function (){/*!
-            <div class="scroll_fix_wrap" id="page_wrap" style="margin-bottom: 100px;">
-                <div class="top_info_wrap" id="bad_browser">
-                    <div class="scroll_fix" style="width: 1903px;">
-                        <div class="info">
-                            You are using an outdated browser.
-                            <a onclick="toggle('good_browsers');">More »</a>
-                            <div id="good_browsers" style="display: block;">
-                                To be able to use all of the site's functions, download and install one of the following browsers:
-                                <div>
-                                    <a class="fl_l" style='background: url("{{ imagePath }}chrome.gif") no-repeat 50% 6px;' href="http://www.google.com/chrome/" target="_blank">Google Chrome</a>
-                                    <a class="fl_l" style='background: url("{{ imagePath }}opera.gif") no-repeat 50% 7px;' href="http://www.opera.com/" target="_blank">Opera</a>
-                                    <a class="fl_l" style='background: url("{{ imagePath }}safari.gif") no-repeat 50% 0px;' href="http://www.apple.com/safari/" target="_blank">Safari</a>
-                                    <a class="fl_l" style='background: url("{{ imagePath }}firefox.gif") no-repeat 50% 7px;' href="http://www.mozilla-europe.org/" target="_blank">Mozilla Firefox</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        */}.toString().match(/function\s*\(\)\s*\{[^\/]*\s*\/\*\!?\s*([\s\S]+?)\s*\*\/\s*\}/)[1]
+        return [
+            '<div class="scroll_fix_wrap" id="page_wrap" style="margin-bottom: 100px;">',
+            '    <div class="top_info_wrap" id="bad_browser">',
+            '        <div class="scroll_fix" style="width: 1903px;">',
+            '            <div class="info">',
+            '                You are using an outdated browser.',
+            '                <a onclick="toggle(\'good_browsers\');">More »</a>',
+            '                <div id="good_browsers" style="display: block;">',
+            '                    To be able to use all of the site\'s functions, download and install one of the following browsers:',
+            '                    <div>',
+            '                        <a class="fl_l" style=\'background: url("{{ imagePath }}chrome.gif") no-repeat 50% 6px;\' href="http://www.google.com/chrome/" target="_blank">Google Chrome</a>',
+            '                        <a class="fl_l" style=\'background: url("{{ imagePath }}opera.gif") no-repeat 50% 7px;\' href="http://www.opera.com/" target="_blank">Opera</a>',
+            '                        <a class="fl_l" style=\'background: url("{{ imagePath }}safari.gif") no-repeat 50% 0px;\' href="http://www.apple.com/safari/" target="_blank">Safari</a>',
+            '                        <a class="fl_l" style=\'background: url("{{ imagePath }}firefox.gif") no-repeat 50% 7px;\' href="http://www.mozilla-europe.org/" target="_blank">Mozilla Firefox</a>',
+            '                    </div>',
+            '                </div>',
+            '            </div>',
+            '        </div>',
+            '    </div>',
+            '</div>',
+        ].join("\n")
         .replace(/\{\{\s*([\s\S]+?)\s*\}\}/g, function (m, key){
             return config.hasOwnProperty(key) ? config[key] : "";
         });

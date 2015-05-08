@@ -1,0 +1,25 @@
+{
+  "name": "OldBrowsers.js",
+  "version": "0.1.0",
+  "description": "",
+  "main": "old-browsers.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EvgeniyBlinov/old-browsers.git"
+  },
+  "keywords": [
+    "old-browsers",
+    "browsers"
+  ],
+  "author": "Evgeniy Blinov <evgeniy_blinov@mail.ru>",
+  "license": "MIT",
+  "homepage": "https://github.com/EvgeniyBlinov/old-browsers.git",
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-rename": "^1.2.0",
+    "gulp-uglify": "^1.0.2"
+  }
+}
