@@ -37,13 +37,7 @@
         return b;
     };
 
-    var OldBrowsers = function (){
-            //this.config = {
-                //querySelector: true,
-                //localStorage: true,
-                //addEventListener: true
-            //};
-        };
+    var OldBrowsers = function (){};
 
     /**
      * @var Object config
@@ -83,9 +77,9 @@
     OldBrowsers.prototype.getTemplate = function (){
         var config = this.config;
         return [
-            '<div class="scroll_fix_wrap" id="page_wrap" style="margin-bottom: 100px;">',
-            '    <div class="top_info_wrap" id="bad_browser">',
-            '        <div class="scroll_fix" style="width: 1903px;">',
+            '<div class="scroll_fix_wrap" id="bad_browser" style="margin-bottom: 100px;position: absolute; z-index: 9999;">',
+            '    <div class="top_info_wrap">',
+            '        <div class="scroll_fix" style="width: 100%;">',
             '            <div class="info">',
             '                You are using an outdated browser.',
             '                <a onclick="toggle(\'good_browsers\');">More »</a>',
