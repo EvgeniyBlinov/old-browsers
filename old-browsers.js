@@ -1,3 +1,9 @@
+//! old-browsers.js
+//! version : 0.1.0
+//! authors : Evgeniy Blinov <evgeniy_blinov@mail.ru>
+//! license : MIT
+//! https://github.com/EvgeniyBlinov/old-browsers
+
 ;(function (root, factory) {
     if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
