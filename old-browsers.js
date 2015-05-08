@@ -119,9 +119,9 @@
                     firstElement = body.childNodes[0];
 
                 body.insertBefore(this.getTemplate().toDOM(), firstElement);
+                throw new Error('You browser has old version!');
             }
         }
-        throw new Error('You browser has old version!');
     };
 
     /**
@@ -135,19 +135,21 @@
         for (var property in this.config) {
             if (this.config[property] === false) 
                 continue;
-            switch(property) {
+            switch (property) {
                 case 'querySelector':
-                    if (! property in root.document)
+                    if (root.document.querySelector === undefined)
                         this.showOldVersion(options);
+                    break;
                 case 'localStorage':
-                    if (! property in root)
+                    if (root.localStorage === undefined)
                         this.showOldVersion(options);
+                    break;
                 case 'addEventListener':
-                    if (! property in root)
+                    if (root.addEventListener === undefined)
                         this.showOldVersion(options);
+                    break;
             }
         }
-        this.showOldVersion();
     };
 
     return OldBrowsers;
