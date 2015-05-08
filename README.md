@@ -4,11 +4,11 @@
 old-browsers
 
 
-### License ###
+### License
 
 [![MIT License][license-image]][license-url]
 
-### Author ###
+## Author
 
 - [Blinov Evgeniy](mailto:evgeniy_blinov@mail.ru) ([http://blinov.in.ua/](http://blinov.in.ua/))
 
