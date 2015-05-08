@@ -45,7 +45,7 @@
     OldBrowsers.prototype.config = {
         imagePath: '/',
         //container: '',
-        showBrowserMenu: true,
+        showBrowserMenu: function (){},
         querySelector: true,
         localStorage: true,
         addEventListener: true
@@ -105,15 +105,21 @@
     /**
      * Show old version
      *
+     * @param Object options
      * @return void
      * @author Evgeniy Blinov <evgeniy_blinov@mail.ru>
      **/
-    OldBrowsers.prototype.showOldVersion = function (){
-        if (this.config.showBrowserMenu) {
-            var body         = document.getElementsByTagName('body')[0],
-                firstElement = body.childNodes[0];
+    OldBrowsers.prototype.showOldVersion = function (options) {
+        var showBrowserMenu = this.config.showBrowserMenu;
+        if (showBrowserMenu) {
+            if (typeof showBrowserMenu === 'function') {
+                showBrowserMenu(this.config, this.getTemplate());
+            } else {
+                var body         = document.getElementsByTagName('body')[0],
+                    firstElement = body.childNodes[0];
 
-            body.insertBefore(this.getTemplate().toDOM(), firstElement);
+                body.insertBefore(this.getTemplate().toDOM(), firstElement);
+            }
         }
         throw new Error('You browser has old version!');
     };
@@ -121,23 +127,24 @@
     /**
      * Validate
      *
+     * @param Object options
      * @return void
      * @author Evgeniy Blinov <evgeniy_blinov@mail.ru>
      **/
-    OldBrowsers.prototype.validate = function (){
+    OldBrowsers.prototype.validate = function (options) {
         for (var property in this.config) {
             if (this.config[property] === false) 
                 continue;
             switch(property) {
                 case 'querySelector':
                     if (! property in root.document)
-                        this.showOldVersion();
+                        this.showOldVersion(options);
                 case 'localStorage':
                     if (! property in root)
-                        this.showOldVersion();
+                        this.showOldVersion(options);
                 case 'addEventListener':
                     if (! property in root)
-                        this.showOldVersion();
+                        this.showOldVersion(options);
             }
         }
         this.showOldVersion();
